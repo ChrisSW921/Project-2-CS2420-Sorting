@@ -4,9 +4,17 @@ import time
 from recursioncounter import RecursionCounter
 
 def quicksort(lyst):
-    """quick sort"""
+    """Quicksort function"""
+    RecursionCounter()
     if isinstance(lyst, list):
-        print("Hi")
+        if len(lyst) <= 1:
+            return lyst
+        pivot = lyst[len(lyst) // 2]
+        left = [x for x in lyst if x < pivot]
+        middle = [x for x in lyst if x == pivot]
+        right = [x for x in lyst if x > pivot]
+        return quicksort(left) + middle + quicksort(right)
+    raise ValueError
 
 
 def merge(left, right):
@@ -57,6 +65,7 @@ def selection_sort(lyst):
                     min_idx = item
             lyst[num], lyst[min_idx] = lyst[min_idx], lyst[num]
         return lyst
+    raise ValueError
 
 
 def insertion_sort(lyst):
@@ -69,16 +78,26 @@ def insertion_sort(lyst):
                 lyst[currentposition] = lyst[currentposition - 1]
                 currentposition = currentposition - 1
             lyst[currentposition] = currentvalue
+        return lyst
+    raise ValueError
 
 def timesort(lyst):
     """Time sort"""
-    print("OK")
+    if isinstance(lyst, list):
+        new_list = sorted(lyst)
+        return new_list
+    raise ValueError
 
 
 def is_sorted(lyst):
     """Is sorted"""
-    if isinstance(lyst, list):
-        print("Hi")
+    if all(isinstance(x, int) for x in lyst) and isinstance(lyst, list):
+        sorted_list = False
+        if all(lyst[i] <= lyst[i + 1] for i in range(len(lyst) - 1)):
+            sorted_list = True
+        return sorted_list
+    raise ValueError
+
 
 
 def main():
@@ -118,7 +137,7 @@ def main():
     test = DATA.copy()
     print("starting timesort")
     start = time.perf_counter()
-    timesort(test)
+    is_sorted(timesort(test))
     end = time.perf_counter()
     print(f"timesort duration: {end - start} seconds\n")
 
