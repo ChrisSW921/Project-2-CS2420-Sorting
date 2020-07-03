@@ -104,37 +104,37 @@ def main():
     """main function"""
     data_size = 10000
     random.seed(0)
-    DATA = random.sample(range(data_size * 3), k=data_size)
+    data = random.sample(range(data_size * 3), k=data_size)
 
-    test = DATA.copy()
+    test = data.copy()
     print("starting selection_sort")
     start = time.perf_counter()
     selection_sort(test)
     end = time.perf_counter()
     print(f"selection_sort duration: {end-start} seconds\n")
 
-    test = DATA.copy()
+    test = data.copy()
     print("starting insertion_sort")
     start = time.perf_counter()
     insertion_sort(test)
     end = time.perf_counter()
     print(f"insertion_sort duration: {end - start} seconds\n")
 
-    test = DATA.copy()
+    test = data.copy()
     print("starting mergesort")
     start = time.perf_counter()
     mergesort(test)
     end = time.perf_counter()
     print(f"mergesort duration: {end - start} seconds\n")
 
-    test = DATA.copy()
+    test = data.copy()
     print("starting quicksort")
     start = time.perf_counter()
     quicksort(test)
     end = time.perf_counter()
     print(f"quicksort duration: {end - start} seconds\n")
 
-    test = DATA.copy()
+    test = data.copy()
     print("starting timesort")
     start = time.perf_counter()
     is_sorted(timesort(test))
@@ -142,4 +142,5 @@ def main():
     print(f"timesort duration: {end - start} seconds\n")
 
 
-main()
+if __name__ == '__main__':
+    main()
